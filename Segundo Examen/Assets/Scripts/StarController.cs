@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarController : PsychicsObject
+public class StarController : MonoBehaviour
 {
     [SerializeField]
     GameObject sparkles;
