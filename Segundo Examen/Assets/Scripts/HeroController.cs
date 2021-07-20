@@ -8,7 +8,7 @@ public class HeroController : PsychicsObject
     float maxSpeed = 5F;
 
     [SerializeField]
-    float jumpTakeOffSpeed = 500F;
+    float jumpTakeOffSpeed = 8F;
 
     Animator animator;
 
