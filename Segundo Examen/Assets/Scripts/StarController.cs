@@ -16,7 +16,7 @@ public class StarController : MonoBehaviour
         levelManager = FindObjectOfType<LevelManagerController>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Instantiate(sparkles, transform.position, transform.rotation);
         Destroy(gameObject);
