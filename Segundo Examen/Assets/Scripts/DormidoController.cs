@@ -7,8 +7,8 @@ public class DormidoController : MonoBehaviour
     [SerializeField]
     Transform hero;
 
-    //[SerializeField]
-    //float speed = 2F;
+    [SerializeField]
+    float speed = 2F;
 
     Animator animator;
 
@@ -26,11 +26,11 @@ public class DormidoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 move = Vector2.zero;
+        Vector2 nextPosition = new Vector2(-8, -2.11F);
         if (hero.position.x >= 1 && hero.position.y <= -2.11)
         {
             animator.SetBool("awake", true);
-            //velocity = move * speed;
+            transform.position = Vector2.MoveTowards(transform.position, nextPosition, Time.deltaTime * speed);
         }
     }
 }
