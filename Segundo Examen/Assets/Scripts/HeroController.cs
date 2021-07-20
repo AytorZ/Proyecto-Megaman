@@ -24,15 +24,15 @@ public class HeroController : PsychicsObject
         move.x = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            animator.SetBool("isJumping", true);
+            animator.SetBool("IsJumping", true);
             velocity.y = jumpTakeOffSpeed;
         }
         else if (Input.GetButtonUp("Jump"))
         {
             if (velocity.y > 0)
             {
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", true);
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFalling", true);
                 velocity.y = velocity.y * 0.5F;
 
             }
@@ -40,7 +40,7 @@ public class HeroController : PsychicsObject
 
         if (grounded)
         {
-            animator.SetBool("isFalling", false);
+            animator.SetBool("IsFalling", false);
         }
 
         if (move.x != 0)
