@@ -21,18 +21,18 @@ public class FinalController : MonoBehaviour
         session = SessionManagerController.GetInstancia() as SessionManagerController;
 
         int maximo = PlayerPrefs.GetInt("MaximoMarcador");
-        int marcador = session.GetScore();
+        //int marcador = session.GetScore();
 
-        marcadorTexto.text = marcador.ToString();
-        felicidadesTexto.enabled = false;
+        //marcadorTexto.text = marcador.ToString();
+        //felicidadesTexto.enabled = false;
 
-        if (marcador > maximo)
-        {
-            PlayerPrefs.SetInt("MaximoMarcador", marcador);
-            felicidadesTexto.enabled = true;
-            maximo = marcador;
-        }
+        //if (marcador > maximo)
+        //{
+        //    PlayerPrefs.SetInt("MaximoMarcador", marcador);
+        //    felicidadesTexto.enabled = true;
+        //    maximo = marcador;
+        //}
 
-        maximoTexto.text = maximo.ToString();
+        //maximoTexto.text = maximo.ToString();
     }
 }

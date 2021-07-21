@@ -33,7 +33,7 @@ public class SceneLoaderController : MonoBehaviour
     public void PrimeraEscena()
     {
         FadeAndLoadScene(0);
-        sessionManager.ResetScore();
+        //sessionManager.ResetScore();
     }
 
     /// <summary>

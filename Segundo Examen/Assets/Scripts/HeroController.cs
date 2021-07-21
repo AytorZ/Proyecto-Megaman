@@ -59,4 +59,16 @@ public class HeroController : PsychicsObject
         animator.SetFloat("Speed", Mathf.Abs(move.x));
         targetVelocity = move * maxSpeed;
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Patrulla")
+        {
+            Debug.Log("Pego con patrulla");
+        }
+        else if(collision.gameObject.name == "Dormido")
+        {
+            Debug.Log("Pego con dormido");
+        }
+    }
 }
