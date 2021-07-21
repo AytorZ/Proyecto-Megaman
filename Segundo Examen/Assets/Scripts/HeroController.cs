@@ -60,13 +60,25 @@ public class HeroController : PsychicsObject
         targetVelocity = move * maxSpeed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.gameObject.name == "Patrulla")
+    //    {
+    //        Debug.Log("Pego con patrulla");
+    //    }
+    //    else if(collision.gameObject.name == "Dormido")
+    //    {
+    //        Debug.Log("Pego con dormido");
+    //    }
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Patrulla")
+        if (collision.gameObject.name == "Patrulla")
         {
             Debug.Log("Pego con patrulla");
         }
-        else if(collision.gameObject.name == "Dormido")
+        else if (collision.gameObject.name == "Dormido")
         {
             Debug.Log("Pego con dormido");
         }
