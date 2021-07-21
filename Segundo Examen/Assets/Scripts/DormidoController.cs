@@ -7,6 +7,9 @@ public class DormidoController : PsychicsObject
     [SerializeField]
     Transform hero;
 
+    [SerializeField]
+    GameObject sparkles;
+
     Animator animator;
     bool facingRight = true;
     bool toTheLeft = true;
@@ -60,5 +63,11 @@ public class DormidoController : PsychicsObject
                 }
             }
         } 
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Instantiate(sparkles, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

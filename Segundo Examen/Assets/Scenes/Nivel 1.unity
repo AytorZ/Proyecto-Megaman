@@ -1478,7 +1478,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.24575019, y: 0.7863952}
@@ -1637,7 +1637,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130466ab3dfefca4bbba85431c22f8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityModifier: 1
+  minGroundNormalY: 0.65
   hero: {fileID: 888630263}
+  sparkles: {fileID: 648247734384101608, guid: 9dfa92b1f4f904047a487e4210dade18, type: 3}
 --- !u!1 &1446646938
 GameObject:
   m_ObjectHideFlags: 0
