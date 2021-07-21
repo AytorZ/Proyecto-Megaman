@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8d4bad270b58a4991d22e681fda7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityModifier: 0
+  gravityModifier: 1
   minGroundNormalY: 0.65
   maxSpeed: 5
   jumpTakeOffSpeed: 8
