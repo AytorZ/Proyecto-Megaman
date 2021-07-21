@@ -12,10 +12,13 @@ public class HeroController : PsychicsObject
 
     Animator animator;
 
+    SessionManagerController sessionManager;
+
     bool facingRight = true;
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        sessionManager = SessionManagerController.GetInstancia() as SessionManagerController;
     }
 
     protected override void ComputeVelocity()
@@ -76,6 +79,7 @@ public class HeroController : PsychicsObject
     {
         if (collision.gameObject.name == "Patrulla")
         {
+            sessionManager.doDamage(40);
             Debug.Log("Pego con patrulla");
         }
         else if (collision.gameObject.name == "Dormido")

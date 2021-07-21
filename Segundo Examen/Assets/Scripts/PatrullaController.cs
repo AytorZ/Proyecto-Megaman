@@ -10,7 +10,7 @@ public class PatrullaController : PsychicsObject
     Animator animator;
     bool facingRight = true;
     bool toTheLeft = true;
-    int distanceCout = 800;
+    int distanceCout = 700;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class PatrullaController : PsychicsObject
         if(distanceCout == 0)
         {
             toTheLeft = !toTheLeft;
-            distanceCout = 1000;
+            distanceCout = 700;
         }
 
         if (targetVelocity.x != 0)
