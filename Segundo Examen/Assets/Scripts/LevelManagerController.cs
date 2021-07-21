@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class LevelManagerController : MonoBehaviour
 {
-    int breakableBricks = 0;
+    int hp = 100;
 
-    public void countBreakableBrick()
+    public void damage(int amount)
     {
-        breakableBricks++;
+        hp = hp - amount;
     }
 
-    public void breakBrick()
+    public int getHealth()
     {
-        breakableBricks--;
-    }
-
-    public int getBreakableBricks()
-    {
-        return breakableBricks;
+        return hp;
     }
 }
