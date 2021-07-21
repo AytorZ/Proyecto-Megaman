@@ -786,7 +786,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.9666499}
@@ -926,6 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityModifier: 1
   minGroundNormalY: 0.65
+  sparkles: {fileID: 648247734384101608, guid: 9dfa92b1f4f904047a487e4210dade18, type: 3}
 --- !u!50 &677931232
 Rigidbody2D:
   serializedVersion: 4

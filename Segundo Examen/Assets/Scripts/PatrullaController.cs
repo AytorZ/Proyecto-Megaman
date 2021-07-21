@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PatrullaController : PsychicsObject
 {
+    [SerializeField]
+    GameObject sparkles;
+
     Animator animator;
     bool facingRight = true;
     bool toTheLeft = true;
@@ -45,6 +48,12 @@ public class PatrullaController : PsychicsObject
                 transform.localScale = localScale;
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Instantiate(sparkles, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
 }
