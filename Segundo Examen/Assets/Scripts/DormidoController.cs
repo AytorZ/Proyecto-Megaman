@@ -7,9 +7,7 @@ public class DormidoController : MonoBehaviour
     [SerializeField]
     Transform hero;
 
-    [SerializeField]
     float speed = 2F;
-
     Animator animator;
 
     void Awake()
@@ -26,11 +24,16 @@ public class DormidoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 nextPosition = new Vector2(-8, -2.11F);
-        if (hero.position.x >= 1 && hero.position.y <= -2.11)
+        Vector2 nextPosition = new Vector2(-8, -2.5F);
+        Vector2 leftPosition = new Vector2(4, -2.5F);
+        float distanceToHero = transform.position.x - hero.transform.position.x;
+        if (distanceToHero <= 4)
         {
             animator.SetBool("awake", true);
             transform.position = Vector2.MoveTowards(transform.position, nextPosition, Time.deltaTime * speed);
+        } else if (transform.position.x == nextPosition.x)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, leftPosition, Time.deltaTime * speed);
         }
     }
 }
