@@ -17,24 +17,24 @@ public class SessionManagerController : Singleton<SessionManagerController>
                 if (player == null)
                 {
                     player = new Player();
-                    ResetScore();
+                    ResetLife();
                 }
             }
         }
     }
 
-    public int GetScore()
+    public int GetLife()
     {
-        return player.Score;
+        return player.Health;
     }
 
-    public void AddScore(int value)
+    public void doDamage(int value)
     {
-        player.Score += value;
+        player.Health -= value;
     }
 
-    public void ResetScore()
+    public void ResetLife()
     {
-        player.Score = 0;
+        player.Health = 100;
     }
 }
