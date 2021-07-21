@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DormidoController : MonoBehaviour 
+public class DormidoController : PsychicsObject
 {
     [SerializeField]
     Transform hero;
 
-    float speed = 2F;
     Animator animator;
+    bool facingRight = true;
+    bool toTheLeft = true;
+    int distanceCout = 3000;
 
     void Awake()
     {
@@ -24,16 +26,39 @@ public class DormidoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 nextPosition = new Vector2(-8, -2.5F);
-        Vector2 leftPosition = new Vector2(4, -2.5F);
         float distanceToHero = transform.position.x - hero.transform.position.x;
         if (distanceToHero <= 4)
         {
             animator.SetBool("awake", true);
-            transform.position = Vector2.MoveTowards(transform.position, nextPosition, Time.deltaTime * speed);
-        } else if (transform.position.x == nextPosition.x)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, leftPosition, Time.deltaTime * speed);
-        }
+            if (toTheLeft)
+            {
+                distanceCout--;
+                targetVelocity.x = -2F;
+            }
+            else
+            {
+                distanceCout--;
+                targetVelocity.x = 2F;
+            }
+
+            if (distanceCout == 0)
+            {
+                toTheLeft = !toTheLeft;
+                distanceCout = 1000;
+            }
+
+            if (targetVelocity.x != 0)
+            {
+                bool wasFacingRight = facingRight;
+                facingRight = targetVelocity.x < 0;
+
+                if (wasFacingRight != facingRight)
+                {
+                    Vector3 localScale = transform.localScale;
+                    localScale.x = -localScale.x;
+                    transform.localScale = localScale;
+                }
+            }
+        } 
     }
 }
