@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,11 +43,15 @@ public class PhysicsObject : MonoBehaviour
     {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
+        ComputeAttack();
+    }
+
+    protected virtual void ComputeAttack()
+    {
     }
 
     protected virtual void ComputeVelocity()
     {
-
     }
 
     private void FixedUpdate()

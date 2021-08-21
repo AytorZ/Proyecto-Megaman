@@ -13,9 +13,24 @@ public class MegaManController : PhysicsObject
     Animator animator;
     bool facingRight = true;
 
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    protected override void ComputeAttack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            animator.SetBool("isFiring", true);
+            fire();
+        }else if (Input.GetButtonUp("Fire1"))
+        {
+            animator.SetBool("isFiring", false);
+        }
     }
 
     protected override void ComputeVelocity()
@@ -51,13 +66,16 @@ public class MegaManController : PhysicsObject
 
             if (wasFacingRight != facingRight)
             {
-                Vector3 localScale = transform.localScale;
-                localScale.x = -localScale.x;
-                transform.localScale = localScale;
+                transform.Rotate(0, 180F, 0);
             }
         }
 
         animator.SetFloat("Speed", Mathf.Abs(move.x));
         targetVelocity = move * maxSpeed;
+    }
+
+    public void fire()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }

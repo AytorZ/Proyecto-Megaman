@@ -16,7 +16,6 @@ public class GutsManController : PhysicsObject
 
     Animator animator;
 
-    int attackHash;
     int awakeHash;
 
     float passiveCounter;
@@ -41,7 +40,6 @@ public class GutsManController : PhysicsObject
     {
         animator = GetComponent<Animator>();
         awakeHash = Animator.StringToHash("imActive");
-        attackHash = Animator.StringToHash("isAttacking");
         setPassiveCounter();
         setAttackCounter();
         setBackCounter();
@@ -67,7 +65,7 @@ public class GutsManController : PhysicsObject
 
     private void attack()
     {
-        animator.SetBool(attackHash, true);
+        animator.SetBool("isAttacking", true);
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
         attackCounter -= Time.deltaTime;
         if(attackCounter < 0)
@@ -82,7 +80,7 @@ public class GutsManController : PhysicsObject
         backCounter -= Time.deltaTime;
         if(backCounter < 0)
         {
-            animator.SetBool(attackHash, false);
+            animator.SetBool("isAttacking", false);
             setPassiveCounter();
             setAttackCounter();
             setBackCounter();
