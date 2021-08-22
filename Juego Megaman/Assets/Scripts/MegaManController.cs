@@ -16,9 +16,17 @@ public class MegaManController : PhysicsObject
     public Transform firePoint;
     public GameObject bulletPrefab;
 
+    int walkingHash;
+    int jumpingHash;
+    int fallingHash;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+
+        walkingHash = Animator.StringToHash("Speed");
+        jumpingHash = Animator.StringToHash("isJumping");
+        fallingHash = Animator.StringToHash("isFalling");
     }
 
     protected override void ComputeAttack()
@@ -40,23 +48,16 @@ public class MegaManController : PhysicsObject
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            animator.SetBool("isJumping", true);
+            animator.SetBool(jumpingHash, true);
             velocity.y = jumpTakeOffSpeed;
         }
         else if (Input.GetButtonUp("Jump"))
         {
+            animator.SetBool(fallingHash, true);
             if (velocity.y > 0)
             {
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", true);
                 velocity.y = velocity.y * 0.5F;
-
             }
-        }
-
-        if (grounded)
-        {
-            animator.SetBool("isFalling", false);
         }
 
         if (move.x != 0)
@@ -72,6 +73,21 @@ public class MegaManController : PhysicsObject
 
         animator.SetFloat("Speed", Mathf.Abs(move.x));
         targetVelocity = move * maxSpeed;
+
+        if (grounded)
+        {
+            animator.SetBool(jumpingHash, false);
+            animator.SetBool(fallingHash, false);
+            animator.SetFloat(walkingHash, Mathf.Abs(move.x));
+        }
+        else
+        {
+            animator.SetBool(jumpingHash, true);
+            if (velocity.y < -0.01)
+            {
+                animator.SetBool(fallingHash, true);
+            }
+        }
     }
 
     public void fire()
