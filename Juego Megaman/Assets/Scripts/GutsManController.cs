@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GutsManController : PhysicsObject
+public class GutsManController : MonoBehaviour
 {
     [SerializeField]
     Transform target;
@@ -16,6 +16,10 @@ public class GutsManController : PhysicsObject
 
     Animator animator;
 
+
+    public GameObject player;
+
+    int health = 100;
     int awakeHash;
 
     float passiveCounter;
@@ -24,16 +28,16 @@ public class GutsManController : PhysicsObject
 
     void setPassiveCounter()
     {
-        passiveCounter = 3F;
+        passiveCounter = 3.0F;
     }
 
     void setAttackCounter()
     {
-        attackCounter = 1F;
+        attackCounter = 1.0F;
     }
     void setBackCounter()
     {
-        backCounter = 3F;
+        backCounter = 1.0F;
     }
 
     void Awake()
@@ -86,4 +90,19 @@ public class GutsManController : PhysicsObject
             setBackCounter();
         }
     }
+
+    public void takeDamage(int damage)
+    {
+        health -= damage;
+        if(health < 0) {
+            Destroy(gameObject);
+            player.GetComponent<PlayerController>().Win();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        takeDamage(20);
+    }
+
 }
