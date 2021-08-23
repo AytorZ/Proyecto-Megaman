@@ -12,7 +12,7 @@ public class SceneLoaderController : MonoBehaviour
         fader = FindObjectOfType<FaderController>();
     }
 
-    void FadeAndLoadScene(int sceneIndex)
+    void FadeAndLoadScene(int sceneIndex)   
     {
         StartCoroutine(fader.FadeAndLoadScene(FaderController.FadeDirection.IN, sceneIndex));
     }
