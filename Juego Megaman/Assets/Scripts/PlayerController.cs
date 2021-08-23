@@ -26,10 +26,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HealDamage(float heal)
+    {
+        if(healthController.GetHealth() < 100.0F)
+        {
+            healthController.Increase(heal);
+        }
+    }
+
     void Lose()
     {
         lose.SetActive(true);
-        //Invoke(nameof(ReloadScene), 2.0F);
         gameObject.SetActive(false);
     }
 
@@ -38,10 +45,4 @@ public class PlayerController : MonoBehaviour
         win.SetActive(true);
         gameObject.SetActive(false);
     }
-
-    //void ReloadScene()
-    //{
-    //    int currentScene = SceneManager.GetActiveScene().buildIndex;
-    //    SceneManager.LoadScene(currentScene);
-    //}
 }
