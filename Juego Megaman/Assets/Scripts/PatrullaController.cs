@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrullaController : PhysicsObject
+public class PatrullaController : MonoBehaviour
 {
     [SerializeField]
-    GameObject sparkles;
+    float moveSpeed = 1.0F;
+
+    [SerializeField]
+    bool isFacingRight = true;
+    [SerializeField]
+    int distanceCout = 1500;
 
     Animator animator;
-    bool facingRight = false;
     bool toTheLeft = true;
-    int distanceCout = 400;
 
     private void Awake()
     {
@@ -19,40 +22,41 @@ public class PatrullaController : PhysicsObject
 
     void Update()
     {
-        if(toTheLeft)
+
+        Vector3 position = Vector3.zero;
+        bool wasFacingRight = isFacingRight;
+
+        if (toTheLeft)
         {
             distanceCout--;
-            targetVelocity.x = -2F;
+            isFacingRight = false;
+            position = Vector3.right * moveSpeed * Time.deltaTime;
         }
         else
         {
             distanceCout--;
-            targetVelocity.x = 2F;
+            isFacingRight = true;
+            position = Vector3.left * moveSpeed * Time.deltaTime;
         }
 
         if(distanceCout == 0)
         {
             toTheLeft = !toTheLeft;
-            distanceCout = 500;
+            distanceCout = 1500;
         }
 
-        if (targetVelocity.x != 0)
+        if (wasFacingRight != isFacingRight)
         {
-            bool wasFacingRight = facingRight;
-            facingRight = targetVelocity.x < 0;
-
-            if (wasFacingRight != facingRight)
-            {
-                Vector3 localScale = transform.localScale;
-                localScale.x = -localScale.x;
-                transform.localScale = localScale;
-            }
+            Vector3 localScale = transform.localScale;
+            localScale.x = -localScale.x;
+            transform.localScale = localScale;
         }
+        transform.Translate(position);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(sparkles, transform.position, transform.rotation);
+        
         Destroy(gameObject);
     }
 

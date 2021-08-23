@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917ff43e7d726cb419671cb881362fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1136148696}
+  character: {fileID: 1998032968}
 --- !u!1 &324764976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,6 @@ GameObject:
   - component: {fileID: 1927740295}
   - component: {fileID: 1927740294}
   - component: {fileID: 1927740296}
-  - component: {fileID: 1927740297}
   - component: {fileID: 1927740293}
   m_Layer: 0
   m_Name: Metol
@@ -1266,9 +1265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d481dc33fc9be43b17d7f86e2d66b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityModifier: 1
-  minGroundNormalY: 0.65
-  sparkles: {fileID: 0}
+  moveSpeed: 1
+  isFacingRight: 0
+  distanceCout: 1500
 --- !u!95 &1927740294
 Animator:
   serializedVersion: 3
@@ -1355,27 +1354,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0022320747, y: -0.060269237}
   m_Size: {x: 0.4955225, y: 0.5848105}
   m_Direction: 0
---- !u!50 &1927740297
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927740291}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &1998032967
 GameObject:
   m_ObjectHideFlags: 0
