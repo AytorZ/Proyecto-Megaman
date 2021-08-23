@@ -22,18 +22,4 @@ public class SessionManagerController : Singleton<SessionManagerController>
         }
     }
 
-    public int GetScore()
-    {
-        return player.Score;
-    }
-
-    public void AddScore(int value)
-    {
-        player.Score += value;
-    }
-
-    public void ResetScore()
-    {
-        player.Score = 0;
-    }
 }
