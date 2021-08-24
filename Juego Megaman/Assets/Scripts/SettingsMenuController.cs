@@ -12,7 +12,7 @@ public class SettingsMenuController : MonoBehaviour
     AudioMixer audioMixer;
 
     [SerializeField]
-    Scrollbar volumeSlider;
+    Slider volumeSlider;
 
     SessionManagerController sessionManager;
 
